@@ -1,5 +1,5 @@
 # OwnAuth
-Tired of using Auth apps on your mobile ? Do trust MNCs like Google, Microsoft's Auth apps to secure your secret keys ?
+Tired of using Auth apps on your mobile ? Do you trust MNCs like Google, Microsoft's Auth apps to secure your secret keys ?
 
 Worry not, this repository helps you to make your own Serverless Auth website that can be accessible anywhere in the world only by "YOU".
 
