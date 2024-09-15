@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>OwnAuth Serverless</title>
+
+    <!-- Recommended meta tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+    <!-- PyScript CSS -->
+    <link rel="stylesheet" href="https://pyscript.net/releases/2024.8.1/core.css">
+
+    <!-- This script tag bootstraps PyScript -->
+    <script type="module" src="https://pyscript.net/releases/2024.8.1/core.js"></script>
+
+    <!-- Custom CSS -->
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #1e1e1e;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            color: #e0e0e0;
+        }
+    
+        .container {
+            text-align: center;
+            background: #2e2e2e;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            width: 300px;
+        }
+    
+        h1 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #89e4b2; /* Vibrant green color */
+        }
+    
+        #otp {
+            margin-bottom: 20px;
+            padding: 10px;
+            display: flex;
+            justify-content: center; /* Center align the input field */
+        }
+    
+        #otp input {
+            font-size: 118px;
+            padding: 10px;
+            width: 100%;
+            max-width: 250px; /* Ensure it doesn’t stretch too much */
+            border: 2px solid #55a39d; /* Vibrant teal color */
+            border-radius: 4px;
+            background: #333;
+            color: #e0e0e0;
+            box-sizing: border-box; /* Include padding in width */
+        }
+    
+        #time {
+            font-size: 20px;
+            color: #76ff03; /* Vibrant green color */
+        }
+    </style>
+    
+</head>
+<body>
+    <div class="container">
+        <h1>OwnAuth Serverless</h1>
+        <div id="otp"></div>
+        <div id="time"></div>
+        <script type="py" src="./main.py" config="./connection.toml"></script>
+        <script>
+            function timeLeftInInterval() {
+                const currentTimeMillis = Date.now();
+                const currentTimeSeconds = Math.floor(currentTimeMillis / 1000);
+                const secondsLeft = 30 - (currentTimeSeconds % 30);
+                return secondsLeft;
+            }
+
+            function updateTimeLeft() {
+                const timeLeft = timeLeftInInterval();
+                const timer = document.getElementById('time');
+                if (timeLeft <= 1) {
+                    window.location.reload();
+                } else {
+                    timer.textContent = `Time left: ${timeLeft} seconds`;
+                }
+            }
+
+            setInterval(updateTimeLeft, 1000);
+            updateTimeLeft();
+        </script>
+    </div>
+</body>
+</html>
