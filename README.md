@@ -16,7 +16,7 @@ Requirements - A GitHub account & secret_keys
 
 Note
 - Project is built using PyScript and main.py is extracted from [link](https://github.com/pyauth/pyotp/tree/develop/src/pyotp)
-- This is just for experimentation. Don't use this even for personal use.
+- <mark>This is just for experimentation. Don't use this even for personal use.<mark>
 
 
 ## Improvements Yet To Be Done
